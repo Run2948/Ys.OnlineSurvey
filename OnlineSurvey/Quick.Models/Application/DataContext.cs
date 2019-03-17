@@ -24,6 +24,7 @@ using Quick.Models.Validation;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,8 +39,10 @@ namespace Quick.Models.Application
         public DataContext() :
             base(DbProvider.GetDataBaseProvider())
         {
-            Database.CreateIfNotExists();
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Quick.Models.Migrations.Configuration>());
+            if (Database.Exists())
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Quick.Models.Migrations.Configuration>());
+            else
+                Database.SetInitializer(new DataInitializer());
 #if DEBUG
             Database.Log = s =>
             {
@@ -49,12 +52,16 @@ namespace Quick.Models.Application
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
             //设置的表的名称是一个多元化的实体类型名称版本
-            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             // 设置EntityFramework中decimal类型数据精度
             modelBuilder.Conventions.Add(new DecimalPrecisionAttributeConvention());
-            modelBuilder.Entity<UserInfo>().HasMany(e => e.LoginRecord).WithRequired(e => e.UserInfo).WillCascadeOnDelete(true);
+            // UserInfo LoginRecords
+            modelBuilder.Entity<UserInfo>().HasMany(e => e.LoginRecords).WithRequired(e => e.UserInfo).WillCascadeOnDelete(true);
+            // SurveyQuestion 关联配置
+            modelBuilder.Entity<SurveyQuestion>().HasKey(sq => new { sq.SurveyId, sq.QuestionId });
+
+            base.OnModelCreating(modelBuilder);
         }
 
         //重写 SaveChanges

@@ -35,11 +35,6 @@ namespace Quick.Models.Entity.Table
     [Table("UserInfo")]
     public class UserInfo : BaseEntity
     {
-        public UserInfo()
-        {
-            IsAdmin = false;
-        }
-
         /// <summary>
         /// 用户名
         /// </summary>
@@ -68,19 +63,7 @@ namespace Quick.Models.Entity.Table
         /// 是否是管理员
         /// </summary>
         [DefaultValue(false)]
-        public bool IsAdmin { get; set; }
-
-
-        /// <summary>
-        /// 邮箱
-        /// </summary>
-        [IsEmail]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// QQ或微信
-        /// </summary>
-        public string QQorWechat { get; set; }
+        public bool IsAdmin { get; set; } = false;
 
         /// <summary>
         /// 用户头像
@@ -88,10 +71,15 @@ namespace Quick.Models.Entity.Table
         public string Avatar { get; set; }
 
         /// <summary>
-        /// AccessToken，接入第三方登陆时用
+        /// 是否启用
         /// </summary>
-        public string AccessToken { get; set; }
+        [DefaultValue(true)]
+        public bool IsActive { get; set; } = true;
 
-        public virtual ICollection<LoginRecord> LoginRecord { get; set; }
+        /// <summary>
+        /// 包含日志
+        /// </summary>
+        public virtual ICollection<LoginRecord> LoginRecords { get; set; }
+
     }
 }

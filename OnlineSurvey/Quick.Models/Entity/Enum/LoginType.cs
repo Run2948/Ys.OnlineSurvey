@@ -17,6 +17,8 @@
 * ==============================================================================*/
 
 
+using System.ComponentModel;
+
 namespace Quick.Models.Entity.Enum
 {
     /// <summary>
@@ -24,8 +26,9 @@ namespace Quick.Models.Entity.Enum
     /// </summary>
     public enum LoginType
     {
+        [Description("电脑")]
         Default,
-        QQ,
-        Wechat
+        [Description("手机")]
+        Phone,
     }
 }

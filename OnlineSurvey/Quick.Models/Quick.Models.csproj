@@ -91,14 +91,21 @@
   <ItemGroup>
     <Compile Include="Application\DataContext.cs" />
     <Compile Include="Common\DbProvider.cs" />
+    <Compile Include="DataInitializer.cs" />
     <Compile Include="Dto\BaseDto.cs" />
     <Compile Include="Dto\UserInfoInputDto.cs" />
     <Compile Include="Dto\UserInfoOutputDto.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\Enum\LoginType.cs" />
+    <Compile Include="Entity\Enum\SurveyStatus.cs" />
     <Compile Include="Entity\GeneratedId.cs" />
+    <Compile Include="Entity\Table\Answer.cs" />
+    <Compile Include="Entity\Table\Question.cs" />
     <Compile Include="Entity\Table\LoginRecord.cs" />
+    <Compile Include="Entity\Table\Survey.cs" />
+    <Compile Include="Entity\Table\SurveyQuestion.cs" />
     <Compile Include="Entity\Table\SystemSetting.cs" />
+    <Compile Include="Entity\Table\SystemType.cs" />
     <Compile Include="Entity\Table\UserInfo.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +134,15 @@
     <Content Include="T4\DataContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DataContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="T4\TextTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TextTemplate.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4\TextTemplate.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextTemplate.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
