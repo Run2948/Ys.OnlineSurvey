@@ -758,22 +758,6 @@ namespace QuickWeb.Controllers.Common
         }
         #endregion
 
-        #region 分页计算总页数
-        protected int GetPage(PageRequest page)
-        {
-            int totalPage = (page.TotalCount + page.PageSize - 1) / page.PageSize;
-            if (page.PageIndex > totalPage) page.PageIndex = 1;
-            return totalPage;
-        }
-
-        protected int GetPage(PageRequest page, int totalCount)
-        {
-            int totalPage = (totalCount + page.PageSize - 1) / page.PageSize;
-            if (page.PageIndex > totalPage) page.PageIndex = totalPage;
-            return totalPage;
-        }
-        #endregion
-
         #region 从前台获取标签的值
         /// <summary>
         /// 从前台获取标签的值

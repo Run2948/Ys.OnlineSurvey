@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div id="editModal" tabindex="-1" class="modal fade in" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h5 class="box-title" id="Title"></h5>
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="form-horizontal">
+                <input type="hidden" id="Id" />
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="SurveyName">问卷名称</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="SurveyName" type="text" placeholder="问卷名称" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Description">问卷说明</label>
+                        <div class="col-sm-10">
+                            <textarea id="Description" class="form-control" rows="3" placeholder="一般放在问卷头部，用于对问卷的补充说明"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="CopyRight">版权信息</label>
+                        <div class="col-sm-10">
+                            <textarea id="CopyRight" class="form-control" rows="3" placeholder="一般放在问卷底部，标明问卷来源"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right box-tools">
+                        <button id="btnSave" class="btn btn-primary" type="button">保存</button>
+                        <button class="btn btn-default" type="button" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

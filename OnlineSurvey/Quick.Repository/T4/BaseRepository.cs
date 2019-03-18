@@ -1,4 +1,4 @@
-﻿
+﻿ 
 /* ==============================================================================
 * 命名空间：Quick.Repository
 * 类 名 称：BaseRepository
@@ -3218,28 +3218,68 @@ namespace Quick.Repository
         }
     }
     /// <summary>
+    /// Answer数据库访问类
+    /// </summary>
+	public partial class AnswerRepository : BaseRepository<Answer>, IAnswerRepository
+	{
+		
+	}
+
+    /// <summary>
     /// LoginRecord数据库访问类
     /// </summary>
 	public partial class LoginRecordRepository : BaseRepository<LoginRecord>, ILoginRecordRepository
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// Question数据库访问类
+    /// </summary>
+	public partial class QuestionRepository : BaseRepository<Question>, IQuestionRepository
+	{
+		
+	}
+
+    /// <summary>
+    /// Survey数据库访问类
+    /// </summary>
+	public partial class SurveyRepository : BaseRepository<Survey>, ISurveyRepository
+	{
+		
+	}
+
+    /// <summary>
+    /// SurveyQuestion数据库访问类
+    /// </summary>
+	public partial class SurveyQuestionRepository : BaseRepository<SurveyQuestion>, ISurveyQuestionRepository
+	{
+		
+	}
 
     /// <summary>
     /// SystemSetting数据库访问类
     /// </summary>
 	public partial class SystemSettingRepository : BaseRepository<SystemSetting>, ISystemSettingRepository
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// SystemType数据库访问类
+    /// </summary>
+	public partial class SystemTypeRepository : BaseRepository<SystemType>, ISystemTypeRepository
+	{
+		
+	}
 
     /// <summary>
     /// UserInfo数据库访问类
     /// </summary>
 	public partial class UserInfoRepository : BaseRepository<UserInfo>, IUserInfoRepository
-    {
-
-    }
+	{
+		
+	}
 
 
 }

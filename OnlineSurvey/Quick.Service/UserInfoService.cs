@@ -39,9 +39,9 @@ namespace Quick.Service
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public UserInfo GetByUsername(string name)
+        public UserInfo GetByUserName(string name)
         {
-            return GetFirstEntity(u => u.Username.Equals(name));
+            return GetFirstEntity(u => u.UserName.Equals(name));
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Quick.Service
         /// <returns></returns>
         public UserInfoOutputDto Login(string username, string password)
         {
-            UserInfo userInfo = GetByUsername(username);
+            UserInfo userInfo = GetByUserName(username);
             if (userInfo != null)
             {
                 UserInfoOutputDto user = userInfo.Mapper<UserInfoOutputDto>();
@@ -74,7 +74,7 @@ namespace Quick.Service
         /// <returns></returns>
         public UserInfo Register(UserInfo userInfo)
         {
-            UserInfo exist = GetFirstEntity(u => u.Username.Equals(userInfo.Username));
+            UserInfo exist = GetFirstEntity(u => u.UserName.Equals(userInfo.UserName));
             if (exist is null)
             {
                 var salt = $"{new Random().StrictNext()}{DateTime.Now.GetTotalMilliseconds()}".MDString2(Guid.NewGuid().ToString()).AESEncrypt();
@@ -92,9 +92,9 @@ namespace Quick.Service
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public bool UsernameExist(string name)
+        public bool UserNameExist(string name)
         {
-            UserInfo userInfo = GetByUsername(name);
+            UserInfo userInfo = GetByUserName(name);
             return userInfo != null;
         }
 
@@ -107,7 +107,7 @@ namespace Quick.Service
         /// <returns></returns>
         public bool ChangePassword(string name, string oldPwd, string newPwd)
         {
-            UserInfo userInfo = GetByUsername(name);
+            UserInfo userInfo = GetByUserName(name);
             if (userInfo != null)
             {
                 string key = userInfo.SaltKey;
@@ -149,7 +149,7 @@ namespace Quick.Service
         /// <returns></returns>
         public bool ResetPassword(string name, string newPwd = "123456")
         {
-            UserInfo userInfo = GetByUsername(name);
+            UserInfo userInfo = GetByUserName(name);
             if (userInfo != null)
             {
                 var salt = $"{new Random().StrictNext()}{DateTime.Now.GetTotalMilliseconds()}".MDString2(Guid.NewGuid().ToString()).AESEncrypt();

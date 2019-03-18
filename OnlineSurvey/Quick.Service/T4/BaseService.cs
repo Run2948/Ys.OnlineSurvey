@@ -1,4 +1,4 @@
-﻿
+﻿ 
 /* ==============================================================================
 * 命名空间：Quick.Service
 * 类 名 称：BaseService
@@ -2891,7 +2891,7 @@ namespace Quick.Service
         /// <returns></returns>
         public virtual int Update(Expression<Func<T, bool>> @where, Expression<Func<T, T>> @do)
         {
-            return BaseRepository.Update(@where, @do);
+            return BaseRepository.Update(@where,@do);
         }
 
         /// <summary>
@@ -2990,28 +2990,68 @@ namespace Quick.Service
     }
 
     /// <summary>
+    /// Answer业务类
+    /// </summary>
+	public partial class AnswerService : BaseService<Answer>, IAnswerService
+	{
+		
+	}
+
+    /// <summary>
     /// LoginRecord业务类
     /// </summary>
 	public partial class LoginRecordService : BaseService<LoginRecord>, ILoginRecordService
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// Question业务类
+    /// </summary>
+	public partial class QuestionService : BaseService<Question>, IQuestionService
+	{
+		
+	}
+
+    /// <summary>
+    /// Survey业务类
+    /// </summary>
+	public partial class SurveyService : BaseService<Survey>, ISurveyService
+	{
+		
+	}
+
+    /// <summary>
+    /// SurveyQuestion业务类
+    /// </summary>
+	public partial class SurveyQuestionService : BaseService<SurveyQuestion>, ISurveyQuestionService
+	{
+		
+	}
 
     /// <summary>
     /// SystemSetting业务类
     /// </summary>
 	public partial class SystemSettingService : BaseService<SystemSetting>, ISystemSettingService
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// SystemType业务类
+    /// </summary>
+	public partial class SystemTypeService : BaseService<SystemType>, ISystemTypeService
+	{
+		
+	}
 
     /// <summary>
     /// UserInfo业务类
     /// </summary>
 	public partial class UserInfoService : BaseService<UserInfo>, IUserInfoService
-    {
-
-    }
+	{
+		
+	}
 
 
 }

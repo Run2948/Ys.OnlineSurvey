@@ -1,4 +1,4 @@
-﻿
+﻿ 
 /* ==============================================================================
 * 命名空间：Quick.IRepository
 * 类 名 称：IBaseRepository
@@ -30,7 +30,7 @@ using System.Threading.Tasks;
 
 namespace Quick.IRepository
 {
-    public partial interface IBaseRepository<T> : IDisposable where T : class, new()
+    public partial interface IBaseRepository<T> :IDisposable where T : class, new()
     {
         /// <summary>
         /// 获取所有实体
@@ -2128,28 +2128,68 @@ namespace Quick.IRepository
     }
 
     /// <summary>
+    /// Answer数据库访问接口
+    /// </summary>
+	public interface IAnswerRepository : IBaseRepository<Answer>
+	{
+		
+	}
+
+    /// <summary>
     /// LoginRecord数据库访问接口
     /// </summary>
 	public interface ILoginRecordRepository : IBaseRepository<LoginRecord>
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// Question数据库访问接口
+    /// </summary>
+	public interface IQuestionRepository : IBaseRepository<Question>
+	{
+		
+	}
+
+    /// <summary>
+    /// Survey数据库访问接口
+    /// </summary>
+	public interface ISurveyRepository : IBaseRepository<Survey>
+	{
+		
+	}
+
+    /// <summary>
+    /// SurveyQuestion数据库访问接口
+    /// </summary>
+	public interface ISurveyQuestionRepository : IBaseRepository<SurveyQuestion>
+	{
+		
+	}
 
     /// <summary>
     /// SystemSetting数据库访问接口
     /// </summary>
 	public interface ISystemSettingRepository : IBaseRepository<SystemSetting>
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// SystemType数据库访问接口
+    /// </summary>
+	public interface ISystemTypeRepository : IBaseRepository<SystemType>
+	{
+		
+	}
 
     /// <summary>
     /// UserInfo数据库访问接口
     /// </summary>
 	public interface IUserInfoRepository : IBaseRepository<UserInfo>
-    {
-
-    }
+	{
+		
+	}
 
 
 }

@@ -23,7 +23,7 @@ namespace QuickWeb.Models.Hangfire
                 LoginTime = DateTime.Now,
                 LoginType = type,
             };
-            UserInfo u = UserInfoService.GetByUsername(userInfo.Username);
+            UserInfo u = UserInfoService.GetByUserName(userInfo.UserName);
             u.LoginRecords.Add(record);
             UserInfoService.UpdateEntitySaved(u);
             //string content = System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "App_Data\\template\\login.html").Replace("{{name}}", u.Username).Replace("{{time}}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")).Replace("{{ip}}", record.IpAddress).Replace("{{address}}", record.IpAddress.GetProvince());

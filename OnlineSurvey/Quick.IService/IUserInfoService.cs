@@ -35,7 +35,7 @@ namespace Quick.IService
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        UserInfo GetByUsername(string name);
+        UserInfo GetByUserName(string name);
 
         /// <summary>
         /// 登录
@@ -57,7 +57,7 @@ namespace Quick.IService
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        bool UsernameExist(string name);
+        bool UserNameExist(string name);
 
         /// <summary>
         /// 修改密码

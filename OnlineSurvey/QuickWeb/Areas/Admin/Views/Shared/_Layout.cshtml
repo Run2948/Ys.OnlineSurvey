@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>问卷管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" charset="utf-8">
+    <link rel="stylesheet" href="~/Assets/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/admin/css/AdminLTE.css">
+    <!--皮肤-->
+    <link rel="stylesheet" href="~/Content/admin/css/skins/skin-blue.css">
+    <link rel="stylesheet" href="~/Assets/jstree/dist/themes/default/style.min.css">
+    <link href="~/Assets/select2/dist/css/select2.css" rel="stylesheet" />
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>问卷</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>问卷管理系统</b></span>
+            </a>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Notifications Menu -->
+                        <li class="dropdown notifications-menu">
+                            <!-- Menu toggle button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">您有10条新的消息</li>
+                                <li>
+                                    <!-- Inner Menu: contains the notifications -->
+                                    <ul class="menu">
+                                        <li>
+                                            <!-- start notification -->
+                                            <a href="#">
+                                                <i class="fa fa-paperclip text-aqua"></i> 今天新提交了10份答卷
+                                            </a>
+                                        </li>
+                                        <!-- end notification -->
+                                    </ul>
+                                </li>
+                                <li class="footer"><a href="#">查看所有</a></li>
+                            </ul>
+                        </li>
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="~/Content/admin/images/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs">Fonour</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="~/Content/admin/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <p>
+                                        Alexander Pierce - Web Developer
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">信息编辑</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">退出登录</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar Menu -->
+                @RenderPage("~/Areas/Admin/Views/Shared/_Lefter.cshtml")
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            @*
+                <section class="content-header">
+                    <h1>
+                        Page Header
+                        <small>Optional description</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                        <li class="active">Here</li>
+                    </ol>
+                </section>
+            *@
+            <!-- Main content -->
+            <section class="content">
+                <!--当创建基于_Layout.cshtml布局页面的视图时，视图的内容会和布局页面合并，视图的内容会渲染呈现在@RenderBody()处-->
+                @RenderBody()
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer" style="text-align:center;">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                QQ交流群：801233059
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; @(DateTime.Now.Year) <a href="#">武汉一世计科软件有限公司</a>.</strong> All rights reserved.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <script src="~/Assets/jquery/dist/jquery.js"></script>
+    <script src="~/Assets/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/Content/admin/js/app.js"></script>
+    <script src="~/Content/admin/js/bootstrap-paginator.js"></script>
+    <script src="~/Assets/layer/dist/layer.js"></script>
+    <script src="~/Assets/jstree/dist/jstree.js"></script>
+    <script src="~/Assets/select2/dist/js/select2.js"></script>
+    <script src="~/Assets/select2/dist/js/i18n/zh-CN.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".sidebar-menu li a").each(function () {
+                if ($($(this))[0].href == String(window.location)) {
+                    $(this).parent().addClass('active');
+                    $(this).parents().closest(".treeview").addClass("active");
+                }
+            });
+        });
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>

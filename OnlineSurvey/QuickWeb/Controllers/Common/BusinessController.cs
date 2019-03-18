@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickWeb.Models.RequestModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,13 @@ namespace QuickWeb.Controllers.Common
             if (vCode == null)
                 return false;
             return code.ToLower().Equals(vCode.ToLower());
+        }
+        #endregion
+
+        #region 分页计算总页数
+        protected decimal GetPage(PageModel page)
+        {
+            return Math.Ceiling(Convert.ToDecimal(page.TotalCount) / page.PageSize);;
         }
         #endregion
     }

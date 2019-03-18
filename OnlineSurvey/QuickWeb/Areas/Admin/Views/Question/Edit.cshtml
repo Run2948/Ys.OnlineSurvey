@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div id="editModal" tabindex="-1" class="modal fade in" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h5 class="box-title" id="Title"></h5>
+                <button class="close" aria-label="Close" type="button" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="form-horizontal">
+                <input type="hidden" id="Id" />
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="ItemCount">选项个数</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" id="ItemCount" type="number" min="1" max="9" placeholder="选项个数" autocomplete="off" value="4" />
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="btn btn-success btn-sm" type="button" onclick="createOption();">确定</button>
+                        </div>
+                        <label class="col-sm-2 control-label">  默认为4</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="Topic">题目内容</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="Topic" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div id="options">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="Option1">选项1</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="Option1" type="text" placeholder="选项1" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="Option2">选项2</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="Option2" type="text" placeholder="选项2" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="Option3">选项3</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="Option3" type="text" placeholder="选项3" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="Option4">选项4</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" id="Option4" type="text" placeholder="选项4" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="ItemType">所属类型名称</label>
+                        <div class="col-sm-9">
+                            <select id="ItemType" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="pull-right box-tools">
+                        <button id="btnSave" class="btn btn-primary" type="button">保存</button>
+                        <button class="btn btn-default" type="button" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

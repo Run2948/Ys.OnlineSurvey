@@ -39,7 +39,7 @@ namespace Quick.Models.Entity.Table
         /// 用户名
         /// </summary>
         [Required(ErrorMessage = "用户名不能为空！")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// 显示名称

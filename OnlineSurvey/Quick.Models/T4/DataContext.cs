@@ -1,4 +1,4 @@
-﻿
+﻿ 
 /* ==============================================================================
 * 命名空间：Quick.Models.Application
 * 类 名 称：DataContext
@@ -24,22 +24,47 @@ namespace Quick.Models.Application
 {
     public partial class DataContext : DbContext
     {
-        #region DbSet
-        /// <summary>
+		#region DbSet
+		/// <summary>
+        /// Answer
+        /// </summary>
+        public virtual DbSet<Answer> Answer { get; set; }
+
+		/// <summary>
         /// LoginRecord
         /// </summary>
         public virtual DbSet<LoginRecord> LoginRecord { get; set; }
 
-        /// <summary>
+		/// <summary>
+        /// Question
+        /// </summary>
+        public virtual DbSet<Question> Question { get; set; }
+
+		/// <summary>
+        /// Survey
+        /// </summary>
+        public virtual DbSet<Survey> Survey { get; set; }
+
+		/// <summary>
+        /// SurveyQuestion
+        /// </summary>
+        public virtual DbSet<SurveyQuestion> SurveyQuestion { get; set; }
+
+		/// <summary>
         /// SystemSetting
         /// </summary>
         public virtual DbSet<SystemSetting> SystemSetting { get; set; }
 
-        /// <summary>
+		/// <summary>
+        /// SystemType
+        /// </summary>
+        public virtual DbSet<SystemType> SystemType { get; set; }
+
+		/// <summary>
         /// UserInfo
         /// </summary>
         public virtual DbSet<UserInfo> UserInfo { get; set; }
 
-        #endregion
+		#endregion
     }
 }

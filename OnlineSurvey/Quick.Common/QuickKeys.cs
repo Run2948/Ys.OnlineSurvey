@@ -30,5 +30,9 @@ namespace Quick.Common
     {
         public const string USER_SESSION = "userinfo";
         public const string USER_LOGIN = "/UserLogin";
+        public const string ADMIN_SESSION = "admininfo";
+        public const string ADMIN_LOGIN = "/Admin/Login";
+        public const string TopicType = "话题类型";
+
     }
 }

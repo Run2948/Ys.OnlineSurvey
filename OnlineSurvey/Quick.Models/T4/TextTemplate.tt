@@ -5,6 +5,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".txt" #>
 
-<# for(int i=1;i<=30;i++) { #>
- public string Qt<#=i#> { get; set; }
+<# for(int i=1;i<=9;i++) { #>
+"Option<#=i#>":$("#Option<#=i#>").val(),
 <#}#>

@@ -1,4 +1,4 @@
-﻿
+﻿ 
 /* ==============================================================================
 * 命名空间：Quick.IService
 * 类 名 称：IBaseService
@@ -2238,28 +2238,68 @@ namespace Quick.IService
     }
 
     /// <summary>
+    /// Answer业务接口
+    /// </summary>
+	public partial interface IAnswerService : IBaseService<Answer>
+	{
+		
+	}
+
+    /// <summary>
     /// LoginRecord业务接口
     /// </summary>
 	public partial interface ILoginRecordService : IBaseService<LoginRecord>
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// Question业务接口
+    /// </summary>
+	public partial interface IQuestionService : IBaseService<Question>
+	{
+		
+	}
+
+    /// <summary>
+    /// Survey业务接口
+    /// </summary>
+	public partial interface ISurveyService : IBaseService<Survey>
+	{
+		
+	}
+
+    /// <summary>
+    /// SurveyQuestion业务接口
+    /// </summary>
+	public partial interface ISurveyQuestionService : IBaseService<SurveyQuestion>
+	{
+		
+	}
 
     /// <summary>
     /// SystemSetting业务接口
     /// </summary>
 	public partial interface ISystemSettingService : IBaseService<SystemSetting>
-    {
+	{
+		
+	}
 
-    }
+    /// <summary>
+    /// SystemType业务接口
+    /// </summary>
+	public partial interface ISystemTypeService : IBaseService<SystemType>
+	{
+		
+	}
 
     /// <summary>
     /// UserInfo业务接口
     /// </summary>
 	public partial interface IUserInfoService : IBaseService<UserInfo>
-    {
-
-    }
+	{
+		
+	}
 
 
 }

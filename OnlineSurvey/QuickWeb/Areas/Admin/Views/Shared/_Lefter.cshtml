@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<ul class="sidebar-menu">
+    <li class="header"><b>系统菜单</b></li>
+    @*
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-book"></i> <span>账户管理</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="@Url.Action("Index","User",new { area = "Admin" })"><i class="fa fa-sticky-note "></i> <span>学生管理</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","Admin",new { area = "Admin" })"><i class="fa fa-sticky-note "></i> <span>用户管理</span></a>
+                </li>
+            </ul>
+        </li>
+    *@
+    <li>
+        <a href="@Url.Action("Index","Survey",new { area = "Admin" })"><i class="fa fa-book"></i> <span>问卷管理</span></a>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-book"></i> <span>账户管理</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                <a href="@Url.Action("Index","User",new { area = "Admin" })"><i class="fa fa-bookmark-o"></i> <span>用户列表</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Admin","User",new { area = "Admin" })"><i class="fa fa-bookmark-o"></i> <span>管理员列表</span></a>
+            </li>
+        </ul>
+    </li>
+    @*
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-book"></i> <span>Link</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a href="#"><i class="fa fa-bookmark-o"></i> <span>Link 1</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-bookmark-o"></i> <span>Link 2</span></a>
+                </li>
+            </ul>
+        </li>
+    *@
+    <li>
+        <a href="@Url.Action("Index","Question",new { area = "Admin" })"><i class="fa fa-book"></i> <span>话题管理</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("Index","Type",new { area = "Admin" })"><i class="fa fa-book"></i> <span>类型管理</span></a>
+    </li>
+</ul>
+

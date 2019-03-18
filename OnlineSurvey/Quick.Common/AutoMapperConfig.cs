@@ -35,12 +35,8 @@ namespace Quick.Common
         {
             Mapper.Initialize(m =>
             {
-                m.CreateMap<UserInfo, UserInfoInputDto>();
-                m.CreateMap<UserInfoInputDto, UserInfo>();
                 m.CreateMap<UserInfo, UserInfoOutputDto>();
                 m.CreateMap<UserInfoOutputDto, UserInfo>();
-                m.CreateMap<UserInfoInputDto, UserInfoOutputDto>();
-                m.CreateMap<UserInfoOutputDto, UserInfoInputDto>();
             });
         }
     }

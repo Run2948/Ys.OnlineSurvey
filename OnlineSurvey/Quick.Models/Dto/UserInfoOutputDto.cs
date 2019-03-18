@@ -35,7 +35,7 @@ namespace Quick.Models.Dto
         /// <summary>
         /// 用户名
         /// </summary>
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// 显示名称
@@ -43,14 +43,13 @@ namespace Quick.Models.Dto
         public string NickName { get; set; }
 
         /// <summary>
-        /// 是否是管理员
-        /// </summary>
-        [DefaultValue(false)]
-        public bool IsAdmin { get; set; }
-
-        /// <summary>
         /// 用户头像
         /// </summary>
         public string Avatar { get; set; }
+
+        /// <summary>
+        /// 用户状态
+        /// </summary>
+        public string IsActive { get; set; }
     }
 }

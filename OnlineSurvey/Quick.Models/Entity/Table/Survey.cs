@@ -43,6 +43,12 @@ namespace Quick.Models.Entity.Table
         public string CopyRight { get; set; }
 
         /// <summary>
+        /// 问卷的索引标识，与id均可唯一确定一份问卷
+        /// </summary>
+        [Index(IsUnique = true)]
+        public Guid GuidId { get; set; } = Guid.NewGuid();
+
+        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { get; set; } = DateTime.Now;
@@ -51,11 +57,5 @@ namespace Quick.Models.Entity.Table
         /// 问卷状态
         /// </summary>
         public SurveyStatus SurveyStatus { get; set; } = SurveyStatus.Creating;
-
-        /// <summary>
-        /// 话题集合
-        /// </summary>
-        public virtual ICollection<Question> SurveyQuestions { get; set; }
-
     }
 }

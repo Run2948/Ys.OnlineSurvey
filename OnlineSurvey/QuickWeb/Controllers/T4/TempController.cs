@@ -1,4 +1,4 @@
-﻿
+﻿ 
 /* ==============================================================================
 * 命名空间：ShopDrugs.Controllers
 * 类 名 称：TempController
@@ -31,11 +31,21 @@ namespace QuickWeb.Controllers
     /// </summary>
     public class TempController : Controller
     {
-        public ILoginRecordService LoginRecordService { get; set; }
+		public IAnswerService AnswerService { get;set; }	
 
-        public ISystemSettingService SystemSettingService { get; set; }
+		public ILoginRecordService LoginRecordService { get;set; }	
 
-        public IUserInfoService UserInfoService { get; set; }
+		public IQuestionService QuestionService { get;set; }	
 
-    }
+		public ISurveyService SurveyService { get;set; }	
+
+		public ISurveyQuestionService SurveyQuestionService { get;set; }	
+
+		public ISystemSettingService SystemSettingService { get;set; }	
+
+		public ISystemTypeService SystemTypeService { get;set; }	
+
+		public IUserInfoService UserInfoService { get;set; }	
+
+	}
 }

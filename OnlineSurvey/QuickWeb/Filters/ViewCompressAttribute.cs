@@ -32,7 +32,7 @@ namespace QuickWeb.Filters
             var req = filterContext.HttpContext.Request;
             try
             {
-                if (filterContext.ActionDescriptor.GetCustomAttributes(typeof(QuickPermissionAttribute), true).Length <= 0 && req.HttpMethod.Equals("GET", StringComparison.InvariantCultureIgnoreCase) && req.UserAgent != null && !req.UserAgent.Contains(new[] { "DNSPod", "Baidu", "spider", "Python", "bot" }))
+                if (filterContext.ActionDescriptor.GetCustomAttributes(typeof(QuickUserPermissionAttribute), true).Length <= 0 && req.HttpMethod.Equals("GET", StringComparison.InvariantCultureIgnoreCase) && req.UserAgent != null && !req.UserAgent.Contains(new[] { "DNSPod", "Baidu", "spider", "Python", "bot" }))
                 {
                     Guid uid = filterContext.HttpContext.Session.Get<Guid>("currentOnline");
                     if (uid == Guid.Empty)

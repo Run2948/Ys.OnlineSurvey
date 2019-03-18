@@ -36,12 +36,12 @@ namespace Quick.Models.Entity.Table
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50,ErrorMessage ="类型名称长度不能超过50")]
+        [MaxLength(50, ErrorMessage = "类型名称长度不能超过50")]
         public string TypeName { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
-        [MaxLength(50,ErrorMessage ="名称长度不能超过50")]
+        [Index(IsUnique = false)]
+        [MaxLength(50, ErrorMessage = "名称长度不能超过50")]
         public string Name { get; set; }
 
     }

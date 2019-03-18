@@ -32,11 +32,13 @@ namespace Quick.Models.Entity.Table
         /// <summary>
         /// 话题
         /// </summary>
+        [Required]
         public string Topic { get; set; }
 
         /// <summary>
         /// 项数
         /// </summary>
+        [Required]
         public int ItemCount { get; set; }
 
         /// <summary>
@@ -60,6 +62,10 @@ namespace Quick.Models.Entity.Table
         /// <summary>
         /// 话题类别：1.单选题   2.多选题   3.列表菜单  4.文本框  5.文本区域   6.日期题   10.单选+其它(文本框)   20多选+其它(文本框)  
         /// </summary>
+        [Required]
+        [ForeignKey("SystemType")]
         public int ItemType { get; set; }
+
+        public virtual SystemType SystemType { get; set; }
     }
 }
