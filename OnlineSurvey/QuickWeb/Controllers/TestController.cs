@@ -16,12 +16,16 @@ namespace QuickWeb.Controllers
     {
         public ISystemSettingService SystemSettingService { get; set; }
 
+        public ISurveyService SurveyService { get;set; }	
+
         public ActionResult Index()
         {
             try
             {
-                var list = SystemSettingService.GetAll().ToList();
-                return Ok("测试完毕，请在RouteConfig中配置正式的启动页", list);
+                //var list = SystemSettingService.GetAll().ToList();
+                var dto = SurveyService.GetWholeSurvey(new Guid("E2206020-7798-4783-9A8B-3BD83EA36DD8"));
+                //return Ok("测试完毕，请在RouteConfig中配置正式的启动页", list);
+                return Ok(dto);
             }
             catch (Exception e)
             {

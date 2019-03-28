@@ -40,7 +40,7 @@ namespace Quick.Models.Entity.Enum
         /// <summary>
         /// 开启中
         /// </summary>
-        [Description("开启中")]
+        [Description("发布中")]
         Starting,
         /// <summary>
         /// 已暂停

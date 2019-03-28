@@ -36,21 +36,39 @@ function loadTables(startPage, pageSize) {
 				tr += "<td title='" + item.copyRight + "' onclick='show(\"" + item.copyRight + "\")'><span class='btn btn-primary btn-xs'><i class='fa fa-eye'> 查看</span></td>";
 				tr += "<td>" + item.createTime + "</td>";
 				switch (item.surveyStatus) {
-					case 0:
-						tr += "<td><span class='btn btn-info btn-xs'>创建中</span></td>"; break;
-					case 1:
-						tr += "<td><span class='btn btn-info btn-xs'>待发布</span></td>"; break;
-					case 2:
-						tr += "<td><span class='btn btn-info btn-xs'>开启中</span></td>"; break;
-					case 3:
-						tr += "<td><span class='btn btn-warning btn-xs'>已暂停</span></td>"; break;
-					case 4:
-						tr += "<td><span class='btn btn-info btn-xs'>已结束</span></td>"; break;
-					case 5:
-						tr += "<td><span class='btn btn-danger btn-xs'>已关闭</span></td>"; break;
+					case 0: // 创建中
+						tr += "<td>" +
+							"<span class='btn btn-info btn-xs'>创建中</span> " +
+							"<button class='btn btn-info btn-xs' href='javascript:;' onclick='giveQuestion(\"" + item.id + "\")'><i class='fa fa-institution'></i> 分配答题 </button>" +
+							"</td>"; break;
+					case 1: // 待发布
+						tr += "<td>" +
+							"<span class='btn btn-info btn-xs'>待发布</span> " +
+							"<button class='btn btn-info btn-xs' href='javascript:;' onclick='giveQuestion(\"" + item.id + "\")'><i class='fa fa-institution'></i> 分配答题 </button>  " +
+							"<button class='btn btn-warning btn-xs' href='javascript:;' onclick='setStatus(\"" + item.id + ",2\")'><i class='fa fa-hand-o-right'></i> 发布问卷 </button>" +
+							"</td>"; break;
+					case 2:// 发布中
+						tr += "<td>" +
+							"<span class='btn btn-info btn-xs'>发布中</span>" +
+							"<button class='btn btn-warning btn-xs' href='javascript:;' onclick='setStatus(\"" + item.id + ",3\")'><i class='fa fa-hand-o-right'></i> 暂停问卷 </button>" +
+							"<button class='btn btn-warning btn-xs' href='javascript:;' onclick='setStatus(\"" + item.id + ",5\")'><i class='fa fa-hand-o-right'></i> 关闭问卷 </button>" +
+							"</td>"; break;
+					case 3:// 已暂停
+						tr += "<td>" +
+							"<span class='btn btn-warning btn-xs'>已暂停</span> " +
+							"<button class='btn btn-info btn-xs' href='javascript:;' onclick='giveQuestion(\"" + item.id + "\")'><i class='fa fa-institution'></i> 分配答题 </button>  " +
+							"<button class='btn btn-info btn-xs' href='javascript:;' onclick='giveQuestion(\"" + item.id + ",2\")'><i class='fa fa-hand-o-right'></i> 发布问卷 </button> " +
+							"</td>"; break;
+					case 4:// 已结束
+						tr += "<td>" +
+							"<span class='btn btn-info btn-xs'>已结束</span>" +
+							"</td>"; break;
+					case 5:// 已关闭
+						tr += "<td>" +
+							"<span class='btn btn-danger btn-xs'>已关闭</span>" +
+							"</td>"; break;
 				}
-
-				tr += "<td><button class='btn btn-info btn-xs' href='javascript:;' onclick='edit(\"" + item.id + "\")'><i class='fa fa-edit'></i> 编辑 </button> <button class='btn btn-danger btn-xs' href='javascript:;' onclick='deleteSingle(\"" + item.id + "\")'><i class='fa fa-trash-o'></i> 删除 </button> </td>"
+				tr += "<td><button class='btn btn-info btn-xs' href='javascript:;' onclick='edit(\"" + item.id + "\")'><i class='fa fa-edit'></i> 编辑 </button> <button class='btn btn-danger btn-xs' href='javascript:;' onclick='deleteSingle(\"" + item.id + "\")'><i class='fa fa-trash-o'></i> 删除 </button> </td>";
 				tr += "</tr>";
 				$("#tableBody").append(tr);
 			});
@@ -200,6 +218,7 @@ function deleteMulti() {
 	});
 };
 
+//问卷信息展示
 function show(text) {
 	layer.open({
 		type: 1,
@@ -207,4 +226,90 @@ function show(text) {
 		shade: [0.8, '#393D49'],
 		content: '<br/>&nbsp;&nbsp;' + text + '<br/><br/>'
 	});
+}
+
+var zNodes = '';
+
+//选择题目
+function giveQuestion(id) {
+	$("#node_id").val(id);
+	//加载层
+	var loading = layer.load(0, { shade: false }); //0代表加载的风格，支持0-2
+	// 获取权限信息
+	$.getJSON("/Admin/Survey/GetQuestions", { 'id': id }, function (res) {
+		layer.close(loading);
+		if (1 == res.status) {
+			zNodes = res.data;  //将字符串转换成obj
+			//页面层
+			var index = layer.open({
+				type: 1,
+				area: ['650px', '400px'],
+				title: '话题设置',
+				content: $('#topic')
+			});
+
+			//设置 zetree
+			var setting = {
+				check: {
+					enable: true
+				},
+				data: {
+					simpleData: {
+						enable: true
+					}
+				}
+			};
+			$.fn.zTree.init($("#treeType"), setting, zNodes);
+			var zTree = $.fn.zTree.getZTreeObj("treeType");
+			zTree.expandAll(true);
+		} else if (0 == res.status) {
+			layer.alert(res.msg, { title: '友情提示', icon: 2 });
+		} else {
+			window.location.reload();
+		}
+	});
+}
+
+//确认选择题目
+function saveQuestion() {
+	var zTree = $.fn.zTree.getZTreeObj("treeType");
+	var nodes = zTree.getCheckedNodes(true);
+	var topics = [];
+	$.each(nodes, function (n, value) {
+		if (value.pId < 0) {
+			topics.push(value.id);
+		}
+	});
+	var id = $("#node_id").val();
+	//写入库
+	$.post("/Admin/Survey/Save", { 'id': id, 'topics': topics }, function (res) {
+		layer.closeAll();
+		if (1 == res.status) {
+			layer.alert("分配成功！", { title: '友情提示', icon: 1, closeBtn: 0 }, function (self) {
+				layer.close(self);
+				loadTables(1, pageCount);
+			});
+		} else if (0 == res.status) {
+			layer.alert(res.msg, { title: '友情提示', icon: 2 });
+		} else {
+			window.location.reload();
+		}
+	}, 'json');
+}
+
+//问卷状态控制
+function setStatus(id, status) {
+	$.post("/Admin/Survey/Status", { 'id': id, 'status': status }, function (res) {
+		layer.closeAll();
+		if (1 == res.status) {
+			layer.alert("操作成功！", { title: '友情提示', icon: 1, closeBtn: 0 }, function (self) {
+				layer.close(self);
+				loadTables(1, pageCount);
+			});
+		} else if (0 == res.status) {
+			layer.alert(res.msg, { title: '友情提示', icon: 2 });
+		} else {
+			window.location.reload();
+		}
+	}, 'json');
 }

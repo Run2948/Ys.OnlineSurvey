@@ -1,0 +1,44 @@
+[
+  {
+    "outputFileName": "Content/answer/css/ComputerAnswer.min.css",
+    "inputFiles": [
+      "Content/answer/css/ComputerAnswer.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/answer/js/ComputerAnswer.min.js",
+    "inputFiles": [
+      "Content/answer/js/ComputerAnswer.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/answer/css/OneLifeSurvey.min.css",
+    "inputFiles": [
+      "Content/answer/css/OneLifeSurvey.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/answer/css/OnlineSurvey.min.css",
+    "inputFiles": [
+      "Content/answer/css/OnlineSurvey.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/answer/js/OnlineSurvey.min.js",
+    "inputFiles": [
+      "Content/answer/js/OnlineSurvey.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/answer/css/moblieSurvey.min.css",
+    "inputFiles": [
+      "Content/answer/css/moblieSurvey.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/answer/css/computerSurvey.min.css",
+    "inputFiles": [
+      "Content/answer/css/computerSurvey.css"
+    ]
+  }
+]

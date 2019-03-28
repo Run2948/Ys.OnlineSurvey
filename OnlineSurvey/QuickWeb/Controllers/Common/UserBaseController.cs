@@ -47,10 +47,6 @@ namespace QuickWeb.Controllers.Common
         }
 
         #endregion
-
-        #region 跳转自定义错误页面
-        protected ActionResult Error() => RedirectToAction("Index", "Error");
-        #endregion
     }
 
     [QuickAdminPermission]
@@ -85,49 +81,6 @@ namespace QuickWeb.Controllers.Common
         {
             System.Web.HttpContext.Current.Session.Remove(QuickKeys.ADMIN_SESSION);
             System.Web.HttpContext.Current.Session.Abandon();
-        }
-
-        #endregion
-
-        #region 跳转自定义错误页面
-        protected ActionResult Error() => View("~/Areas/Admin/Views/Shared/Error.cshtml");
-        #endregion
-
-        #region 只返回Table数据信息
-        /// <summary>
-        /// 只返回Table数据信息
-        /// </summary>
-        /// <returns></returns>
-        protected JsonResult Table(object result, PageModel page)
-        {
-            return new JsonResult
-            {
-                Data = new
-                {
-                    rowCount = page.PageSize,
-                    pageCount = GetPage(page),
-                    rows = result
-                },
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
-
-        /// <summary>
-        /// 只返回Table数据信息
-        /// </summary>
-        /// <returns></returns>
-        protected JsonResult Table(PageModel page, params object[] result)
-        {
-            return new JsonResult
-            {
-                Data = new
-                {
-                    rowCount = page.PageSize,
-                    pageCount = GetPage(page),
-                    rows = result
-                },
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
         }
 
         #endregion

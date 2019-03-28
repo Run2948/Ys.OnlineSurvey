@@ -1,0 +1,4 @@
+<%
+session.Abandon()
+response.redirect "../"
+%>

@@ -1,5 +1,5 @@
 ﻿/* ==============================================================================
-* 命名空间：Quick.Common
+* 命名空间：QuickWeb
 * 类 名 称：AutoMapperConfig
 * 创 建 者：Qing
 * 创建时间：2018-11-29 23:32:54
@@ -21,13 +21,14 @@
 using AutoMapper;
 using Quick.Models.Dto;
 using Quick.Models.Entity.Table;
+using QuickWeb.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quick.Common
+namespace QuickWeb
 {
     public static class AutoMapperConfig
     {
@@ -36,7 +37,23 @@ namespace Quick.Common
             Mapper.Initialize(m =>
             {
                 m.CreateMap<UserInfo, UserInfoOutputDto>();
+
                 m.CreateMap<UserInfoOutputDto, UserInfo>();
+
+                m.CreateMap<SystemTypeDto, NodeInfoView>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(sc => -sc.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(sc => sc.TypeName))
+                    .ForMember(dest => dest.PId, opt => opt.NullSubstitute(0))
+                    .ForMember(dest => dest.Checked, opt => opt.Ignore());
+
+                m.CreateMap<QuestionNodeDto, NodeInfoView>()
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(sc => sc.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(sc => sc.Topic))
+                    .ForMember(dest => dest.PId, opt => opt.MapFrom(sc => -sc.ItemType))
+                    .ForMember(dest => dest.Checked, opt => opt.Ignore());
+
+                m.CreateMap<SurveyDto, SurveyQuestionDto>()
+                    .ForMember(dest => dest.Questions, opt => opt.Ignore());
             });
         }
     }

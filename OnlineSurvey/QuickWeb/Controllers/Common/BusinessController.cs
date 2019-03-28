@@ -28,5 +28,50 @@ namespace QuickWeb.Controllers.Common
             return Math.Ceiling(Convert.ToDecimal(page.TotalCount) / page.PageSize);;
         }
         #endregion
+
+        #region 只返回Table数据信息
+        /// <summary>
+        /// 只返回Table数据信息
+        /// </summary>
+        /// <returns></returns>
+        protected JsonResult Table(object result, PageModel page)
+        {
+            return new JsonResult
+            {
+                Data = new
+                {
+                    rowCount = page.PageSize,
+                    pageCount = GetPage(page),
+                    rows = result
+                },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        /// <summary>
+        /// 只返回Table数据信息
+        /// </summary>
+        /// <returns></returns>
+        protected JsonResult Table(PageModel page, params object[] result)
+        {
+            return new JsonResult
+            {
+                Data = new
+                {
+                    rowCount = page.PageSize,
+                    pageCount = GetPage(page),
+                    rows = result
+                },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
+        #endregion
+
+        #region 跳转自定义错误页面
+        protected ActionResult Error() => RedirectToAction("Index", "Error");
+        protected ActionResult ParamsError() => RedirectToAction("ParamsError", "Error");
+        protected ActionResult NoOrDeleted() => RedirectToAction("NoOrDeleted", "Error");
+        #endregion
     }
 }

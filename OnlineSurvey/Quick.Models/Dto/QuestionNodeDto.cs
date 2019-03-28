@@ -1,10 +1,10 @@
 ﻿/* ==============================================================================
-* 命名空间：Quick.IService 
-* 类 名 称：ISystemTypeService
+* 命名空间：Quick.Models.Dto 
+* 类 名 称：QuestionDto
 * 创 建 者：Qing
-* 创建时间：2019/03/18 19:03:48
+* 创建时间：2019/03/19 10:51:42
 * CLR 版本：4.0.30319.42000
-* 保存的文件名：ISystemTypeService
+* 保存的文件名：QuestionDto
 * 文件版本：V1.0.0.0
 *
 * 功能描述：N/A 
@@ -21,22 +21,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Quick.Models.Dto;
-using Quick.Models.Entity.Table;
 
-namespace Quick.IService
+namespace Quick.Models.Dto
 {
-    /// <summary>
-    /// SystemType业务接口
-    /// </summary>
-	public partial interface ISystemTypeService : IBaseService<SystemType>
-	{
+    public class QuestionNodeDto : BaseDto
+    {
         /// <summary>
-        /// 根据类型名获取类型集合
+        /// 话题
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-		List<SystemTypeDto> GetTypesByName(string name);
-
-	}
+        public string Topic { get; set; }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public int ItemType { get; set; }
+    }
 }

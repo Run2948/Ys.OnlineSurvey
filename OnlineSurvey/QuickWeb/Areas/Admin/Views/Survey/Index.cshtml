@@ -4,6 +4,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/zTree/zTreeStyle.css" type="text/css">
+}
+
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
@@ -57,7 +61,13 @@
 
 @RenderPage("~/Areas/Admin/Views/Survey/Edit.cshtml")
 
+@RenderPage("~/Areas/Admin/Views/Survey/Set.cshtml")
+
 @section scripts{
+    <script type="text/javascript" src="~/Assets/zTree/jquery.ztree.core-3.5.js"></script>
+    <script type="text/javascript" src="~/Assets/zTree/jquery.ztree.excheck-3.5.js"></script>
+    <script type="text/javascript" src="~/Assets/zTree/jquery.ztree.exedit-3.5.js"></script>
     <script src="~/Scripts/Survey/Index.js"></script>
 }
+
 

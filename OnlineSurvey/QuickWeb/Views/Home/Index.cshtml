@@ -1,0 +1,99 @@
+﻿@model Quick.Models.Dto.SurveyQuestionDto
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="applicable-device" content="mobile" />
+    <title>@Model.SurveyName</title>
+    <link href="~/Assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/answer/css/computerSurvey.min.css" rel="stylesheet" />
+    <style>
+        .questionnaire_question_item {
+            padding-top: 16px;
+        }
+    </style>
+</head>
+<body style="background-image: url(/Content/answer/img/bg.jpg);">
+    <div style="position:fixed;margin:auto;left:0; right:0; top:0;width:850px; text-align:center;z-index:10000;">
+        <div class="progress" style="margin-bottom:0px;height:15px;border-radius:0px;opacity:1">
+            <div class="progress-bar  progress-bar-success" role="progressbar" id="progressbarDiv" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;line-height:initial;">
+                0%
+            </div>
+        </div>
+    </div>
+    <form style="margin-top:15px;" id="form1" data-isShowOptionIndex="1">
+        <div>
+            <input type="hidden" name="para" />
+            <input type="hidden" name="Params" />
+            <input type="hidden" name="questionnaireCode" value="@Model.GuidId" />
+            <input type="hidden" name="lastOpenDate" value="@Model.CreateTime.ToString("yyyy-M-d HH:mm:ss")" />
+            <input type="hidden" id="IsShowValidateCode" name="IsShowValidateCode" value="yes">
+        </div>
+        <div class="questionnaire_title">
+            <div class="questionnaire_title_name">
+                @Model.SurveyName
+            </div>
+        </div>
+        <div class="questionnaire_content">
+            <div class="questionnaire_summary">
+                &nbsp; &nbsp; &nbsp; @Model.Description
+            </div>
+            <div class="questionnaire_question">
+                @if (Model.Questions != null && Model.Questions.Any())
+                {
+                    var index = 0;
+                    foreach (var q in Model.Questions)
+                    {
+                        index++;
+                        var pinyin = Survey.GetPinyin(q.SystemType.TypeName);
+                        var py = pinyin.Replace("ti", "");
+                        <div class="questionnaire_question_item @(pinyin) isMustInputDiv " logic="" id="questionItem_@(q.Id)">
+                            <div class="questionnaire_question_item_name">
+                                <span class="questionnaire_question_item_name_index">@(index).</span>
+                                <span class="questionnaire_question_item_name_name">@q.Topic<span style="color:blue;">@(Survey.SurveyType(q.SystemType.TypeName)) </span></span>
+                                <span class="questionnaire_question_item_name_mustinput">*</span>
+                            </div>
+                            <div class="questionnaire_question_item_option">
+                                @for (var i = 1; i <= q.ItemCount; i++)
+                                {
+                                    <div class="questionnaire_question_item_option_option" style="width:@(q.ItemCount > 2?"100":"49")%">
+                                        <input data-qid="@(q.Id)" type="@(Survey.SurveyInputType(q.SystemType.TypeName))" value="@q.GetValue($"Option{i}")" name="Topic@(q.Id)_" id="question_@(py)_@(q.Id)_@(i)" class="questionnaire_question_item_option_option_radio" />
+                                        <label data-qid="@(q.Id)" for="question_@(py)_@(q.Id)_@(i)" class="questionnaire_question_item_option_option_label">@q.GetValue($"Option{i}")</label>
+                                    </div>
+                                }
+                            </div>
+                            <div data-qid="@(q.Id)" class="questionnaire_question_item_@(py)_errorInfo" style="color:red;font-size:14px;">
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div style="text-align:center;margin:10px 12px 20px 12px; ">
+                <div style="clear:both;height:10px;"></div>
+                <span class="btn btn-primary btnConfirm" style="width:200px;border-radius:0px;margin-top:10px;">提交</span>
+            </div>
+            <div style="height:40px;margin:auto;text-align:center;">
+                @if (string.IsNullOrEmpty(Model.CopyRight))
+                {
+                    <span>技术支持&</span><a target="_blank" href="http://www.eggtwo.com">问卷源码网</a>
+                }
+                else
+                {
+                    <span>@Model.CopyRight</span>
+                }
+            </div>
+        </div>
+    </form>
+    <script src="~/Assets/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/answer/js/OnlineSurvey.min.js"></script>
+</body>
+</html>
+
+

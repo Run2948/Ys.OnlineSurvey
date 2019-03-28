@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!-- 题目选择 -->
+<div class="left" style="display: none;z-index:1000000;" id="topic">
+    <input type="hidden" id="node_id">
+    <div class="form-group">
+        <div class="col-sm-5 col-sm-offset-2">
+            <ul id="treeType" class="ztree"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-4" style="margin-bottom: 15px">
+            <input type="button" value="确认提交" class="btn btn-primary" id="post" onclick="saveQuestion();"/>
+        </div>
+    </div>
+</div>
+

@@ -94,7 +94,9 @@
     <Compile Include="DataInitializer.cs" />
     <Compile Include="Dto\AnswerDto.cs" />
     <Compile Include="Dto\BaseDto.cs" />
+    <Compile Include="Dto\QuestionNodeDto.cs" />
     <Compile Include="Dto\SurveyDto.cs" />
+    <Compile Include="Dto\SurveyQuestionDto.cs" />
     <Compile Include="Dto\SystemTypeDto.cs" />
     <Compile Include="Dto\UserInfoOutputDto.cs" />
     <Compile Include="Entity\BaseEntity.cs" />

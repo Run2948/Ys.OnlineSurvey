@@ -58,6 +58,9 @@
     <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EFSecondLevelCache, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EFSecondLevelCache.1.2.0.0\lib\net45\EFSecondLevelCache.dll</HintPath>
     </Reference>
@@ -1142,6 +1145,26 @@
     <Content Include="Assets\ueditor\ueditor.config.front.min.js" />
     <Content Include="Assets\ueditor\ueditor.parse.js" />
     <Content Include="Assets\ueditor\ueditor.parse.min.js" />
+    <Content Include="Assets\zTree\img\button.png" />
+    <Content Include="Assets\zTree\img\diy\1_close.png" />
+    <Content Include="Assets\zTree\img\diy\1_open.png" />
+    <Content Include="Assets\zTree\img\diy\2.png" />
+    <Content Include="Assets\zTree\img\diy\3.png" />
+    <Content Include="Assets\zTree\img\diy\4.png" />
+    <Content Include="Assets\zTree\img\diy\5.png" />
+    <Content Include="Assets\zTree\img\diy\6.png" />
+    <Content Include="Assets\zTree\img\diy\7.png" />
+    <Content Include="Assets\zTree\img\diy\8.png" />
+    <Content Include="Assets\zTree\img\diy\9.png" />
+    <Content Include="Assets\zTree\img\line_conn.gif" />
+    <Content Include="Assets\zTree\img\loading.gif" />
+    <Content Include="Assets\zTree\img\zTreeStandard.gif" />
+    <Content Include="Assets\zTree\img\zTreeStandard.png" />
+    <Content Include="Assets\zTree\jquery.ztree.core-3.5.js" />
+    <Content Include="Assets\zTree\jquery.ztree.excheck-3.5.js" />
+    <Content Include="Assets\zTree\jquery.ztree.exedit-3.5.js" />
+    <Content Include="Assets\zTree\jquery.ztree.exhide-3.5.js" />
+    <Content Include="Assets\zTree\zTreeStyle.css" />
     <Content Include="Content\admin\css\AdminLTE.css" />
     <Content Include="Content\admin\css\AdminLTE.min.css" />
     <Content Include="Content\admin\css\skins\skin-black-light.css" />
@@ -1201,6 +1224,19 @@
     <Content Include="Content\admin\js\app.js" />
     <Content Include="Content\admin\js\app.min.js" />
     <Content Include="Content\admin\js\bootstrap-paginator.js" />
+    <Content Include="Content\answer\css\computerSurvey.min.css">
+      <DependentUpon>computerSurvey.css</DependentUpon>
+    </Content>
+    <Content Include="Content\answer\css\moblieSurvey.css" />
+    <Content Include="Content\answer\css\computerSurvey.css" />
+    <Content Include="Content\answer\css\moblieSurvey.min.css">
+      <DependentUpon>moblieSurvey.css</DependentUpon>
+    </Content>
+    <Content Include="Content\answer\img\bg.jpg" />
+    <Content Include="Content\answer\js\OnlineSurvey.js" />
+    <Content Include="Content\answer\js\OnlineSurvey.min.js">
+      <DependentUpon>OnlineSurvey.js</DependentUpon>
+    </Content>
     <Content Include="Content\public\css\404.css" />
     <Content Include="Content\public\images\404_bg.png" />
     <Content Include="Content\public\js\jquery.antiforgerytoken.js" />
@@ -1222,6 +1258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\HangfireConfig.cs" />
@@ -1230,6 +1267,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnswerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionController.cs" />
@@ -1269,6 +1307,7 @@
     <Compile Include="Models\UEditor\PathFormatter.cs" />
     <Compile Include="Models\UEditor\UeditorConfig.cs" />
     <Compile Include="Models\UEditor\UploadHandler.cs" />
+    <Compile Include="Models\ViewModel\NodeInfoView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1623,6 +1662,10 @@
     <Content Include="Areas\Admin\Views\Type\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Question\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Question\Edit.cshtml" />
+    <Content Include="Assets\zTree\img\diy\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Survey\Set.cshtml" />
+    <Content Include="App_Code\Survey.cshtml" />
+    <None Include="bundleconfig.json" />
     <None Include="packages.config" />
     <Content Include="Views\Error\AccessNoRight.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
@@ -1631,6 +1674,7 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NoOrDeleted.cshtml" />
     <Content Include="Views\Error\ParamsError.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1640,9 +1684,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Models\ViewModel\" />
+    <Folder Include="Areas\Admin\Views\Answer\" />
     <Folder Include="upload\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

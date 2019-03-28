@@ -1,0 +1,22 @@
+﻿@using Quick.Common.Strings
+
+@helper SurveyClass(string text)
+{
+    @PinyinHelper.GetPinyin(text);
+}
+
+@helper SurveyType(string text)
+{
+    @(text == "单选题" ? "" : $"[{text}]")
+}
+
+@helper SurveyInputType(string text)
+{
+    @(text == "单选题" ? "radio" : "checkbox")
+}
+
+@functions{
+    public static string GetPinyin(string text,bool l = true) {
+        return l ? PinyinHelper.GetPinyin(text) : PinyinHelper.GetPinyin(text).Replace("ti","");
+    }
+}

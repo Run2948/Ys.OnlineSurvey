@@ -67,5 +67,10 @@ namespace Quick.Models.Entity.Table
         public int ItemType { get; set; }
 
         public virtual SystemType SystemType { get; set; }
+
+        public object GetValue(string propertyName)
+        {
+            return GetType().GetProperty(propertyName)?.GetValue(this, null);
+        }
     }
 }
